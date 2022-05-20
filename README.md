@@ -3,17 +3,27 @@ Tier: 1-Beginner
 
 Practice and test your knowledge by answering questions in a quiz application.
 
-# User Stories
 
--  User can start the quiz by pressing a button.
--  User can see a question with 4 possible answers.
--  After selecting an answer, display the next question to the User. Do this until the quiz is finished
--  At the end, the User can see the following statistics
-    -   Time it took to finish the quiz
-    -   How many correct answers did he get
-    -   A message showing if he `passed` or `failed` the quiz
+### clone
 
-## Bonus features
--   User can share the result of a quiz on social media
--   Add multiple quizzes to the application. User can select which one to take
--   User can create an account and have all the scores saved in his dashboard. User can complete a quiz multiple times
+git clone https://github.com/btcs-hieuvt/quiz-app-reactjs.git
+
+## npm start
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in your browser.
+
+The page will reload when you make changes.
+You may also see any lint errors in the console.
+
+## npm test
+Launches the test runner in the interactive watch mode.
+See the section about running tests for more information.
+
+## npm run build
+Builds the app for production to the build folder.
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+Your app is ready to be deployed!
+
+See the section about deployment for more information.
