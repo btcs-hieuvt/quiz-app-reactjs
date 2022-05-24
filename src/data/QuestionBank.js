@@ -1,5 +1,13 @@
 export const Questions =[
     {
+        content:"1+1 = mấy ?",
+        optionA:"1",
+        optionB:"2",
+        optionC:"3",
+        optionD:"4",
+        answer :"B"
+    },
+    {
         content:" Thời gian thực dân Pháp tiến hành khai thác thuộc địa lần thứ nhất ở Việt Nam khi nào ?",
         optionA:"1858-1884",
         optionB:"1884-1896",
