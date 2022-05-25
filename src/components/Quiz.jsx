@@ -5,25 +5,39 @@ import { Questions } from "../data/QuestionBank";
 import Time from "./Time";
 
 function Quiz() {
-  const [currQuestion, setCurrQuestion] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [optionChosen, setOptionChosen] = useState("");
-  const { setGameState,} = useContext(QuizContext);
+  const { setGameState,score,setScore} = useContext(QuizContext);
+
 
   // let TimerInterval
-
+console.log(score);
   function nextQuestion() {
-    if (currQuestion >= 0 && currQuestion < Questions.length - 1) {
-      setCurrQuestion(currQuestion + 1);
+
+    if(Questions[currentQuestion].answer === optionChosen){
+      setScore(score + 1)
     }
+    if (currentQuestion >= 0 && currentQuestion < Questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setOptionChosen("")
+    }
+    setOptionChosen("")
+    
   }
   function prevQuestion() {
-    if (currQuestion > 0) {
-      setCurrQuestion(currQuestion - 1);
+  
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
     }
   }
 
-  function endQuiz(){
-     setGameState("end")
+  function endQuiz() {
+    
+    if(Questions[currentQuestion].answer === optionChosen){
+      setScore(score + 1)
+      setOptionChosen("")
+    }
+    setGameState("end");
   }
 
   const optionsBtn =
@@ -33,31 +47,31 @@ function Quiz() {
       <h3 className="text-center mb-[10px] ">Quiz</h3>
       <div className="mb-[20px] flex">
         <p className="flex-1">
-          Cau {currQuestion + 1}: {Questions[currQuestion].content}
+          Câu {currentQuestion + 1}: {Questions[currentQuestion].content}
         </p>
-        <Time  />
+        <Time />
       </div>
 
       <div className="grid grid-rows-2 grid-cols-2 gap-4 mb-[20px]">
         <button className={optionsBtn} onClick={() => setOptionChosen("A")}>
-          A. {Questions[currQuestion].optionA}
+          A. {Questions[currentQuestion].optionA}
         </button>
         <button className={optionsBtn} onClick={() => setOptionChosen("B")}>
-          B. {Questions[currQuestion].optionB}
+          B. {Questions[currentQuestion].optionB}
         </button>
         <button className={optionsBtn} onClick={() => setOptionChosen("C")}>
-          C. {Questions[currQuestion].optionC}
+          C. {Questions[currentQuestion].optionC}
         </button>
         <button className={optionsBtn} onClick={() => setOptionChosen("D")}>
-          D. {Questions[currQuestion].optionD}
+          D. {Questions[currentQuestion].optionD}
         </button>
       </div>
 
       <div className="flex justify-between m-[10px]">
-        <div >
+        <div>
           <button
             className={
-              currQuestion === 0
+              currentQuestion === 0
                 ? `hidden`
                 : `w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`
             }
@@ -68,26 +82,13 @@ function Quiz() {
         </div>
 
         <div>
-          <button
-            className={
-              currQuestion === Questions.length - 1
-                ? `hidden`
-                : `w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`
-            }
-            onClick={nextQuestion}
-          >
-            next quiz
-          </button>
-          <button
-            className={
-              currQuestion === Questions.length - 1
-                ? `w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`
-                : `hidden`
-            }
-            onClick={endQuiz}
-          >
-            End Quiz
-          </button>
+            <button
+              disabled={!optionChosen}
+              className={`w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`}
+              onClick={nextQuestion}
+            >
+             {currentQuestion === Questions.length - 1 ? "end quiz" : "next quiz"} 
+            </button>
         </div>
       </div>
     </div>
