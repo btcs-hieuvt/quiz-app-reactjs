@@ -12,9 +12,12 @@ function Quiz() {
   function nextQuestion() {
     if (currentQuestion >= 0 && currentQuestion < Questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      
     }else{
       setGameState("end");
     }
+    setOptionChosen("")
+    
   }
   function prevQuestion() {
     if (currentQuestion > 0) {
