@@ -22,8 +22,8 @@ function Quiz() {
     }
   }
 
-  function endQuiz(){
-     setGameState("end")
+  function endQuiz() {
+    setGameState("end");
   }
 
   const optionsBtn =
@@ -35,7 +35,7 @@ function Quiz() {
         <p className="flex-1">
           Cau {currQuestion + 1}: {Questions[currQuestion].content}
         </p>
-        <Time  />
+        <Time />
       </div>
 
       <div className="grid grid-rows-2 grid-cols-2 gap-4 mb-[20px]">
@@ -54,7 +54,7 @@ function Quiz() {
       </div>
 
       <div className="flex justify-between m-[10px]">
-        <div >
+        <div>
           <button
             className={
               currQuestion === 0
@@ -68,26 +68,22 @@ function Quiz() {
         </div>
 
         <div>
-          <button
-            className={
-              currQuestion === Questions.length - 1
-                ? `hidden`
-                : `w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`
-            }
-            onClick={nextQuestion}
-          >
-            next quiz
-          </button>
-          <button
-            className={
-              currQuestion === Questions.length - 1
-                ? `w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`
-                : `hidden`
-            }
-            onClick={endQuiz}
-          >
-            End Quiz
-          </button>
+          {currQuestion === Questions.length - 1 ? (
+            <button
+              className={`w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`}
+              onClick={endQuiz}
+            >
+              End Quiz
+            </button>
+          ) : (
+            <button
+              disabled={!optionChosen}
+              className={`w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`}
+              onClick={nextQuestion}
+            >
+              next quiz
+            </button>
+          )}
         </div>
       </div>
     </div>

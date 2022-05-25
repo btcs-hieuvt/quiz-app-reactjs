@@ -10,9 +10,8 @@ function App() {
   const [seconds,setSeconds] =useState(0)
   const [minutes,setMinutes] =useState(0)
 
-  let TimerInterval
 
-  const values ={gameState ,setGameState,seconds,setSeconds,minutes,setMinutes,TimerInterval}
+  const values ={gameState ,setGameState,seconds,setSeconds,minutes,setMinutes}
   return (
     <div className="w-[100vw] h-[100vh] bg-slate-50">
       <h1 className="text-3xl font-bold text-center uppercase py-[20px]">
