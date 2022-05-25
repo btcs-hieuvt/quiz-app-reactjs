@@ -7,27 +7,38 @@ import Time from "./Time";
 function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [optionChosen, setOptionChosen] = useState("");
-  const { setGameState,} = useContext(QuizContext);
+  const { setGameState,score,setScore} = useContext(QuizContext);
 
+
+  // let TimerInterval
+console.log(score);
   function nextQuestion() {
+
+    if(Questions[currentQuestion].answer === optionChosen){
+      setScore(score + 1)
+    }
     if (currentQuestion >= 0 && currentQuestion < Questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
-      
-    }else{
-      setGameState("end");
+      setOptionChosen("")
     }
     setOptionChosen("")
     
   }
   function prevQuestion() {
+  
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     }
   }
 
-  // function endQuiz() {
-  //   setGameState("end");
-  // }
+  function endQuiz() {
+    
+    if(Questions[currentQuestion].answer === optionChosen){
+      setScore(score + 1)
+      setOptionChosen("")
+    }
+    setGameState("end");
+  }
 
   const optionsBtn =
     "text-left px-[20px] py-[16px] border-[1px] rounded-[4px] bg-[#f4f4f4] hover:opacity-[0.8] focus:bg-[#d3fec7]";

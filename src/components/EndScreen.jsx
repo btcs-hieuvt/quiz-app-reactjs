@@ -19,11 +19,10 @@ function EndScreen() {
           Điểm số : {score} / {Questions.length}
         </p>
         <p>
-          Thời gian : {`0${minutes}`.slice(-2)} phút {`0${seconds}`.slice(-2)}
-          giây
+          Thời gian hoàn thành : {`0${minutes}`.slice(-2)} phút {`0${seconds}`.slice(-2)} giây
         </p>
         <p>
-          Trạng thái: {score >= 15 ? "Đạt" : "Không đạt"}
+          Trạng thái : {score >= 15 ? "Đạt" : "Không đạt"}
         </p>
       </div>
 
