@@ -33,7 +33,7 @@ function Quiz() {
       <h3 className="text-center mb-[10px] ">Quiz</h3>
       <div className="mb-[20px] flex">
         <p className="flex-1">
-          Cau {currQuestion + 1}: {Questions[currQuestion].content}
+          Câu {currQuestion + 1}: {Questions[currQuestion].content}
         </p>
         <Time />
       </div>
