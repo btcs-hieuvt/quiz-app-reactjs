@@ -9,8 +9,6 @@ function Quiz() {
   const [optionChosen, setOptionChosen] = useState("")
   const { setGameState, score, setScore } = useContext(QuizContext)
 
-  // let TimerInterval
-  console.log(score)
   function nextQuestion() {
     if (Questions[currentQuestion].answer === optionChosen) {
       setScore(score + 1)
