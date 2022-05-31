@@ -1,47 +1,40 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState } from "react"
 
-import { QuizContext } from "../helpers/contexts";
-import { Questions } from "../data/QuestionBank";
-import Time from "./Time";
+import { QuizContext } from "../helpers/contexts"
+import { Questions } from "../data/QuestionBank"
+import Time from "./Time"
 
 function Quiz() {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [optionChosen, setOptionChosen] = useState("");
-  const { setGameState,score,setScore} = useContext(QuizContext);
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [optionChosen, setOptionChosen] = useState("")
+  const { setGameState, score, setScore } = useContext(QuizContext)
 
-
-  // let TimerInterval
-console.log(score);
   function nextQuestion() {
-
-    if(Questions[currentQuestion].answer === optionChosen){
+    if (Questions[currentQuestion].answer === optionChosen) {
       setScore(score + 1)
     }
     if (currentQuestion >= 0 && currentQuestion < Questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion(currentQuestion + 1)
       setOptionChosen("")
     }
     setOptionChosen("")
-    
   }
   function prevQuestion() {
-  
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
+      setCurrentQuestion(currentQuestion - 1)
     }
   }
 
   function endQuiz() {
-    
-    if(Questions[currentQuestion].answer === optionChosen){
+    if (Questions[currentQuestion].answer === optionChosen) {
       setScore(score + 1)
       setOptionChosen("")
     }
-    setGameState("end");
+    setGameState("end")
   }
 
   const optionsBtn =
-    "text-left px-[20px] py-[16px] border-[1px] rounded-[4px] bg-[#f4f4f4] hover:opacity-[0.8] focus:bg-[#d3fec7]";
+    "text-left px-[20px] py-[16px] border-[1px] rounded-[4px] bg-[#f4f4f4] hover:opacity-[0.8] focus:bg-[#d3fec7]"
   return (
     <div className="w-[100%]">
       <h3 className="text-center mb-[10px] ">Quiz</h3>
@@ -70,11 +63,7 @@ console.log(score);
       <div className="flex justify-between m-[10px]">
         <div>
           <button
-            className={
-              currentQuestion === 0
-                ? `hidden`
-                : `w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`
-            }
+            className={currentQuestion === 0 ? `hidden` : `w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`}
             onClick={prevQuestion}
           >
             prev quiz
@@ -82,17 +71,17 @@ console.log(score);
         </div>
 
         <div>
-            <button
-              disabled={!optionChosen}
-              className={`w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`}
-              onClick={nextQuestion}
-            >
-             {currentQuestion === Questions.length - 1 ? "end quiz" : "next quiz"} 
-            </button>
+          <button
+            disabled={!optionChosen}
+            className={`w-[150px] h-[40px] p-[4px] border-[1px] mx-auto`}
+            onClick={nextQuestion}
+          >
+            {currentQuestion === Questions.length - 1 ? "end quiz" : "next quiz"}
+          </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Quiz;
+export default Quiz
