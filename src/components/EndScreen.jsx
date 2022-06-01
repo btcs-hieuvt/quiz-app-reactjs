@@ -4,12 +4,14 @@ import { QuizContext } from "../helpers/contexts"
 import { Questions } from "../data/QuestionBank"
 
 function EndScreen() {
-  const { setGameState, minutes, seconds, score, setScore,setCurrentQuestion } = useContext(QuizContext)
+  const { setGameState, minutes, seconds, score, setScore, setCurrentQuestion, setOptionChosen } =
+    useContext(QuizContext)
 
   function handlePlayAgain() {
     setGameState("menu")
     setScore(0)
     setCurrentQuestion(0)
+    setOptionChosen("")
   }
   return (
     <>
@@ -23,7 +25,11 @@ function EndScreen() {
             Thời gian hoàn thành : {`0${minutes}`.slice(-2)} phút {`0${seconds}`.slice(-2)} giây
           </p>
           <p>
-            Trạng thái : <span className={score >= 15 ? "text-[#73d13d]" : "text-[#ff4d4f]"}> {score >= 15 ? "Đạt" : "Không đạt"}</span>
+            Trạng thái :{" "}
+            <span className={score >= 15 ? "text-[#73d13d]" : "text-[#ff4d4f]"}>
+              {" "}
+              {score >= 15 ? "Đạt" : "Không đạt"}
+            </span>
           </p>
         </div>
         <div className="flex justify-center items-center p-[20px] mx-[35px]">

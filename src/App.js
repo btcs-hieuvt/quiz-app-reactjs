@@ -13,7 +13,7 @@ function App() {
   const [seconds, setSeconds] = useState(0)
   const [minutes, setMinutes] = useState(0)
   const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [optionChosen, setOptionChosen] = useState("")
+  const [optionChosen, setOptionChosen] = useState()
 
   const values = {
     gameState,
@@ -41,7 +41,9 @@ function App() {
                 <Time />
               </div>
               <div className=" flex">
-                <p>Câu hỏi : {currentQuestion +1}/{Questions.length}</p>
+                <p>
+                  Câu hỏi : {currentQuestion + 1}/{Questions.length}
+                </p>
               </div>
             </div>
           )}

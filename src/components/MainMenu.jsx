@@ -3,11 +3,12 @@ import { Button } from "antd"
 import { QuizContext } from "../helpers/contexts"
 
 function MainMenu() {
-  const { setGameState, setMinutes, setSeconds } = useContext(QuizContext)
+  const { setGameState, setMinutes, setSeconds, setOptionChosen } = useContext(QuizContext)
   function handleStart() {
     setGameState("quiz")
     setMinutes(0)
     setSeconds(0)
+    setOptionChosen("")
   }
   return (
     <>

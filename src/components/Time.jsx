@@ -1,12 +1,12 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 
 import { QuizContext } from "../helpers/contexts"
 
 function Time() {
   const { seconds, setSeconds, minutes, setMinutes } = useContext(QuizContext)
-  let TimerInterval
+  let TimerInterval = useRef()
   useEffect(() => {
-    TimerInterval = setInterval(() => {
+    TimerInterval.current = setInterval(() => {
       setSeconds(seconds + 1)
       if (seconds === 59) {
         setMinutes(minutes + 1)
@@ -14,9 +14,9 @@ function Time() {
       }
     }, 1000)
     return () => {
-      clearInterval(TimerInterval)
+      clearInterval(TimerInterval.current)
     }
-  }, [seconds, setSeconds])
+  }, [seconds, setSeconds, minutes, setMinutes])
   return (
     <div>
       {" "}
