@@ -13,6 +13,7 @@ function Time() {
         setSeconds(0)
       }
     }, 1000)
+
     return () => {
       clearInterval(TimerInterval.current)
     }
