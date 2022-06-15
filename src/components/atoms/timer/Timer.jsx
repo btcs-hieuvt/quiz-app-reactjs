@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react"
 
-import { QuizContext } from "../helpers/contexts"
+import { QuizContext } from "../../../QuizContext"
 
 function Time() {
   const { seconds, setSeconds, minutes, setMinutes } = useContext(QuizContext)
@@ -18,14 +18,15 @@ function Time() {
       clearInterval(TimerInterval.current)
     }
   }, [seconds, setSeconds, minutes, setMinutes])
+
   return (
-    <div>
-      {" "}
-      <span className="text-[#fca5a5]">
-        {`0${minutes}`.slice(-2)} : {`0${seconds}`.slice(-2)}
-      </span>{" "}
-    </div>
+    <>
+      <div>
+        <p>
+          thời gian : {`0${minutes}`.slice(-2)} : {`0${seconds}`.slice(-2)}{" "}
+        </p>
+      </div>
+    </>
   )
 }
-
 export default Time
