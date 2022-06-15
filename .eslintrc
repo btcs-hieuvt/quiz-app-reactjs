@@ -8,7 +8,8 @@
         "semi": false,
         "tabWidth": 2,
         "useTabs": false,
-        "printWidth": 120
+        "printWidth": 120,
+        "endOfLine": "auto"
       }
     ]
   }

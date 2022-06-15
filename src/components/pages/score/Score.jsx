@@ -1,25 +1,25 @@
 import React, { useContext } from "react"
 import { Button } from "antd"
-import { QuizContext } from "../helpers/contexts"
-import { Questions } from "../data/QuestionBank"
+import { useNavigate } from "react-router-dom"
+import { QuizContext } from "../../../QuizContext"
+import { Header } from "../../organisms/header/Header"
 
-function EndScreen() {
-  const { setGameState, minutes, seconds, score, setScore, setCurrentQuestion, setOptionChosen } =
-    useContext(QuizContext)
-
+function Score() {
+  const { questions, minutes, seconds, score, setScore, setCurrentQuestion, setOptionChosen } = useContext(QuizContext)
+  const navigate = useNavigate()
   function handlePlayAgain() {
-    setGameState("menu")
+    navigate("/")
     setScore(0)
     setCurrentQuestion(0)
-    setOptionChosen("")
+    setOptionChosen()
   }
   return (
     <>
-      <div>
-        <h3 className="text-center mb-[10px] text-[22px] font-[600] text-[#262626]">Kết Quả</h3>
-        <div className="flex flex-col justify-center items-start bg-[#fff] text-[18px] p-[20px] mx-[35px] border-[1px] rounded-md border-[#fff] ">
+      <Header />
+      <div className="bg-[#91d5ff] flex items-center flex-col h-[90vh] p-[20px]">
+        <div className="w-[40%] flex flex-col justify-center  items-start bg-[#fff] text-[18px] p-[20px] mx-[35px] border-[1px] rounded-md border-[#fff] ">
           <p>
-            Điểm số : {score} / {Questions.length}
+            Điểm số : {score} / {questions && questions.length}
           </p>
           <p>
             Thời gian hoàn thành : {`0${minutes}`.slice(-2)} phút {`0${seconds}`.slice(-2)} giây
@@ -45,4 +45,4 @@ function EndScreen() {
   )
 }
 
-export default EndScreen
+export { Score }
